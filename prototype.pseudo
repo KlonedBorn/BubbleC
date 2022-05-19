@@ -1,0 +1,31 @@
+struct Vector_t {
+    COORD position;
+    double angle;
+    double magnitude;
+}
+
+struct Circle_t {
+    COORD center;
+    int radius;
+}
+
+struct Shape {
+    int ShapeType;
+    union{
+        COORD vertices[];
+        Circle_t circle;
+    }
+    wchar_t glyph;
+    WORD attribute;
+    Vector_t vector;
+};
+
+struct Sprite_t {
+    COORD top_left_corner;
+    int width , height;
+    wchar_t glyphs[];
+    WORD attributes[];
+    Vector_t vector;
+}
+
+Sprite_t create_sprite(width , height glyphs[] , palette[]);
